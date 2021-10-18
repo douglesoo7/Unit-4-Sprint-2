@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class EventsAdapter(
     val context: Context,
-    private val eventsList: MutableList<EventsModel>
+    private val eventsList: MutableList<EventsModel>,
+    val listener: OnEventClickListener
 ) : RecyclerView.Adapter<EventsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -24,7 +25,10 @@ class EventsAdapter(
         holder.date.text=event.date
         holder.location.text=event.location
         holder.price.text=event.price
-        Log.d("Sachin","Inside OnBind")
+
+        holder.delete.setOnClickListener {
+
+        }
     }
 
     override fun getItemCount(): Int {
