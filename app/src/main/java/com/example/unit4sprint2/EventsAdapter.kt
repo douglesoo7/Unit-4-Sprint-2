@@ -20,14 +20,18 @@ class EventsAdapter(
 
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
         val event = eventsList.get(position)
-        holder.name.text=event.name
-        holder.desc.text=event.desc
-        holder.date.text=event.date
-        holder.location.text=event.location
-        holder.price.text=event.price
+        holder.name.text = event.name
+        holder.desc.text = event.desc
+        holder.date.text = event.date
+        holder.location.text = event.location
+        holder.price.text = event.price
 
         holder.delete.setOnClickListener {
+            listener.onDeleteClickListener(event)
+        }
 
+        holder.update.setOnClickListener {
+            listener.onUpdateClickListener(event)
         }
     }
 

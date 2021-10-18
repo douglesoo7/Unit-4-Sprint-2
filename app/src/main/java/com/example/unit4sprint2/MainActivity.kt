@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), OnEventClickListener {
 
     private var eventsList: MutableList<EventsModel> = mutableListOf()
     lateinit var dbHandler: DatabaseHandler
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         eventsList = dbHandler.getAllEvents()
 
-        eventsAdapter = EventsAdapter(this,eventsList)
+        eventsAdapter = EventsAdapter(this, eventsList, this)
         eventsRecyclerView.layoutManager = LinearLayoutManager(this)
         eventsRecyclerView.adapter = eventsAdapter
 
@@ -30,5 +30,15 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onUpdateClickListener(event: EventsModel) {
+        dbHandler.updateEvent("Evaluation", "Sprint Evaluation", "18/10/2021", "Lucknow", "0")
+        eventsAdapter.notifyDataSetChanged()
+    }
+
+    override fun onDeleteClickListener(event: EventsModel) {
+        dbHandler.deleteEvent(2)
+        eventsAdapter.notifyDataSetChanged()
     }
 }

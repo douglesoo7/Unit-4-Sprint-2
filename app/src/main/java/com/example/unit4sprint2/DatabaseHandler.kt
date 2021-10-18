@@ -2,6 +2,7 @@ package com.example.unit4sprint2
 
 import android.content.ContentValues
 import android.content.Context
+import android.content.LocusId
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
@@ -79,12 +80,50 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
                 val eventsModel = EventsModel(id, name, desc, date, location, price.toString())
 
                 listOfEvents.add(eventsModel)
-                Log.d("Sachin","Inside getAllEvents while")
+                Log.d("Sachin", "Inside getAllEvents while")
             }
             queryResultCursor.close()
         }
         return listOfEvents
 
+    }
+
+    fun updateEvent(
+        newName: String,
+        newDesc: String,
+        newDate: String,
+        newLocation: String,
+        newPrice: String
+    ) {
+        val db = writableDatabase
+        val values = ContentValues()
+
+        values.put(NAME, newName)
+        values.put(DESC, newDesc)
+        values.put(DATE, newDate)
+        values.put(LOCATION, newLocation)
+        values.put(PRICE, newPrice)
+
+        val affectedRows = db.update(TABLE_NAME, values, "id=$ID", null)
+        if (affectedRows>=1){
+            Toast.makeText(context,"Updated Successfully",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(context,"Updated Failed, Try Again",Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    fun deleteEvent(id:Int){
+        val db=writableDatabase
+        val affectedRows = db.delete(TABLE_NAME,"id=$ID", null)
+
+        if (affectedRows>=1){
+            Toast.makeText(context,"Deleted Successfully",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            Toast.makeText(context,"Delete Failed, Try Again",Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
