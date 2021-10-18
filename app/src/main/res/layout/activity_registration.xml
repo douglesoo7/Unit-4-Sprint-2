@@ -13,37 +13,43 @@
         android:id="@+id/etEventName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:hint="Enter Event Name" />
 
     <EditText
         android:id="@+id/etEventDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:hint="Enter Description" />
 
     <EditText
         android:id="@+id/etEventDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:hint="Enter Date" />
 
     <EditText
         android:id="@+id/etEventLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:hint="Enter Location" />
 
     <EditText
         android:id="@+id/etEventPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp" />
+        android:layout_margin="5dp"
+        android:hint="Enter Price" />
 
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register"/>
+        android:layout_marginTop="10dp"
+        android:text="Register" />
 
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import android.widget.Toast
 
 class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsdb", null, 1) {
@@ -77,7 +78,9 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
                 val eventsModel = EventsModel(id, name, desc, date, location, price.toString())
 
                 listOfEvents.add(eventsModel)
+                Log.d("Sachin","Inside getAllEvents while")
             }
+            queryResultCursor.close()
         }
         return listOfEvents
 

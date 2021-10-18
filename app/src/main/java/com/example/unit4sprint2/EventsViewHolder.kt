@@ -10,7 +10,4 @@ class EventsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     var date: TextView = itemView.findViewById(R.id.tvEventDate)
     var location: TextView = itemView.findViewById(R.id.tvEventLocation)
     var price: TextView = itemView.findViewById(R.id.tvEventPrice)
-
-
-
 }
