@@ -12,7 +12,6 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration)
 
         dbHandler = DatabaseHandler(this)
-
         btnRegister.setOnClickListener {
             dbHandler.registerEvent(
                 etEventName.text.toString(),

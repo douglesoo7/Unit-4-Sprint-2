@@ -27,6 +27,11 @@ class MainActivity : AppCompatActivity(), OnEventClickListener {
         btnRegisterEvent.setOnClickListener {
             intent = Intent(applicationContext, RegistrationActivity::class.java)
             startActivity(intent)
+            eventsAdapter.notifyDataSetChanged()
+        }
+
+        search.setOnClickListener{
+            //dbHandler.searchHelp
         }
 
 
