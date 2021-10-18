@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btnRegister.setOnClickListener{
+        btnRegisterEvent.setOnClickListener{
             intent= Intent(applicationContext,RegistrationActivity::class.java)
             startActivity(intent)
         }
