@@ -21,6 +21,7 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
     }
 
     override fun onCreate(db: SQLiteDatabase?) {
+
         val createQuery = "CREATE TABLE $TABLE_NAME($ID INTEGER PRIMARY KEY, " +
                 "$NAME TEXT, " +
                 "$DESC TEXT, " +
@@ -124,6 +125,40 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
         else{
             Toast.makeText(context,"Delete Failed, Try Again",Toast.LENGTH_SHORT).show()
         }
+    }
+
+    fun searchEvent(search:String):MutableList<EventsModel>{
+        val db=readableDatabase
+        val listOfEvents = mutableListOf<EventsModel>()
+        val selectQuery = "select * from $TABLE_NAME where $NAME=$search"
+        val queryResultCursor = db.rawQuery(selectQuery, null)
+
+        if (queryResultCursor != null && queryResultCursor.count > 0) {
+            queryResultCursor.moveToFirst()
+            while (queryResultCursor.moveToNext()) {
+
+                val idIndex = queryResultCursor.getColumnIndex(ID)
+                val nameIndex = queryResultCursor.getColumnIndex(NAME)
+                val descIndex = queryResultCursor.getColumnIndex(DESC)
+                val dateIndex = queryResultCursor.getColumnIndex(DATE)
+                val locationIndex = queryResultCursor.getColumnIndex(LOCATION)
+                val priceIndex = queryResultCursor.getColumnIndex(PRICE)
+
+                val id = queryResultCursor.getInt(idIndex)
+                val name = queryResultCursor.getString(nameIndex)
+                val desc = queryResultCursor.getString(descIndex)
+                val date = queryResultCursor.getString(dateIndex)
+                val location = queryResultCursor.getString(locationIndex)
+                val price = queryResultCursor.getInt(priceIndex)
+
+                val eventsModel = EventsModel(id, name, desc, date, location, price.toString())
+
+                listOfEvents.add(eventsModel)
+                Log.d("Sachin", "Inside getAllEvents while")
+            }
+            queryResultCursor.close()
+        }
+        return listOfEvents
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {

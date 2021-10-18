@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Unit4Sprint2">
         <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+        <activity
             android:name=".RegistrationActivity"
             android:exported="false" />
         <activity
