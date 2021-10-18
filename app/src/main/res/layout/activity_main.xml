@@ -9,10 +9,11 @@
     tools:context=".MainActivity">
 
     <Button
+        android:gravity="bottom"
         android:id="@+id/btnRegisterEvent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Registration"/>
+        android:text="Register An Event"/>
 
 
     <androidx.recyclerview.widget.RecyclerView

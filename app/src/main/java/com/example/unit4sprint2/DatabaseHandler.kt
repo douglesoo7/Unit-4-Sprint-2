@@ -53,9 +53,10 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
     fun getAllEvents(): MutableList<EventsModel> {
 
         val listOfEvents = mutableListOf<EventsModel>()
+
         val db = readableDatabase
         val selectQuery = "select * from $TABLE_NAME"
-        val queryResultCursor = db.rawQuery(selectQuery, null, null)
+        val queryResultCursor = db.rawQuery(selectQuery, null)
 
         if (queryResultCursor != null && queryResultCursor.count > 0) {
             queryResultCursor.moveToFirst()

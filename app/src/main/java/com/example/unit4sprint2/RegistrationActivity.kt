@@ -1,5 +1,6 @@
 package com.example.unit4sprint2
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_registration.*
@@ -20,6 +21,8 @@ class RegistrationActivity : AppCompatActivity() {
                 etEventLocation.text.toString(),
                 etEventPrice.text.toString()
             )
+            intent = Intent(applicationContext, MainActivity::class.java)
+            startActivity(intent)
         }
     }
 }

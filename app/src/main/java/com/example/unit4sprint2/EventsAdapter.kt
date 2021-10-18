@@ -15,7 +15,6 @@ class EventsAdapter(
         val inflater = LayoutInflater.from(parent.context)
         val view: View = inflater.inflate(R.layout.item_layout, parent, false)
         return EventsViewHolder(view)
-
     }
 
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
