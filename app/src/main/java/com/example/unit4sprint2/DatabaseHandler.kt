@@ -62,11 +62,21 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
 
                 val idIndex = queryResultCursor.getColumnIndex(ID)
                 val nameIndex = queryResultCursor.getColumnIndex(NAME)
-                val descIndex = queryResultCursor.getColumnIndex(NAME)
-                val dateIndex = queryResultCursor.getColumnIndex(NAME)
-                val locationIndex = queryResultCursor.getColumnIndex(NAME)
-                val priceIndex = queryResultCursor.getColumnIndex(NAME)
+                val descIndex = queryResultCursor.getColumnIndex(DESC)
+                val dateIndex = queryResultCursor.getColumnIndex(DATE)
+                val locationIndex = queryResultCursor.getColumnIndex(LOCATION)
+                val priceIndex = queryResultCursor.getColumnIndex(PRICE)
 
+                val id = queryResultCursor.getInt(idIndex)
+                val name = queryResultCursor.getString(nameIndex)
+                val desc = queryResultCursor.getString(descIndex)
+                val date = queryResultCursor.getString(dateIndex)
+                val location = queryResultCursor.getString(locationIndex)
+                val price = queryResultCursor.getInt(priceIndex)
+
+                val eventsModel = EventsModel(id, name, desc, date, location, price.toString())
+
+                listOfEvents.add(eventsModel)
             }
         }
         return listOfEvents
