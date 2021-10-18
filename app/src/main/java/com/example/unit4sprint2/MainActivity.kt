@@ -33,12 +33,12 @@ class MainActivity : AppCompatActivity(), OnEventClickListener {
     }
 
     override fun onUpdateClickListener(event: EventsModel) {
-        dbHandler.updateEvent("Evaluation", "Sprint Evaluation", "18/10/2021", "Lucknow", "0")
+        dbHandler.updateEvent(event.id,"Evaluation", "Sprint Evaluation", "18/10/2021", "Lucknow", "0")
         eventsAdapter.notifyDataSetChanged()
     }
 
     override fun onDeleteClickListener(event: EventsModel) {
-        dbHandler.deleteEvent(2)
+        dbHandler.deleteEvent(event.id)
         eventsAdapter.notifyDataSetChanged()
     }
 }

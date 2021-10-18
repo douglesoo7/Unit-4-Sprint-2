@@ -2,7 +2,6 @@ package com.example.unit4sprint2
 
 import android.content.ContentValues
 import android.content.Context
-import android.content.LocusId
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
@@ -89,6 +88,7 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
     }
 
     fun updateEvent(
+        id: Int,
         newName: String,
         newDesc: String,
         newDate: String,
@@ -104,7 +104,7 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
         values.put(LOCATION, newLocation)
         values.put(PRICE, newPrice)
 
-        val affectedRows = db.update(TABLE_NAME, values, "id=$ID", null)
+        val affectedRows = db.update(TABLE_NAME, values, "id=$id", null)
         if (affectedRows>=1){
             Toast.makeText(context,"Updated Successfully",Toast.LENGTH_SHORT).show()
         }
@@ -116,7 +116,7 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
 
     fun deleteEvent(id:Int){
         val db=writableDatabase
-        val affectedRows = db.delete(TABLE_NAME,"id=$ID", null)
+        val affectedRows = db.delete(TABLE_NAME,"id=$id", null)
 
         if (affectedRows>=1){
             Toast.makeText(context,"Deleted Successfully",Toast.LENGTH_SHORT).show()
