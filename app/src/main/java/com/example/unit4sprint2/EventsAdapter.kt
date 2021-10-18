@@ -1,15 +1,20 @@
 package com.example.unit4sprint2
 
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class EventsAdapter: RecyclerView.Adapter<EventsViewHolder>() {
+class EventsAdapter : RecyclerView.Adapter<EventsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-        TODO("Not yet implemented")
+        val inflater = LayoutInflater.from(parent.context)
+        val view: View = inflater.inflate(R.layout.item_layout, parent, false)
+        return EventsViewHolder(view)
+
     }
 
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
-        TODO("Not yet implemented")
+
     }
 
     override fun getItemCount(): Int {

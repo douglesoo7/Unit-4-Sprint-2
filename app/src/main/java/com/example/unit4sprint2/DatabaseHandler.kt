@@ -47,7 +47,29 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
         } else {
             Toast.makeText(context, "Error occurred, Please try again ", Toast.LENGTH_SHORT).show()
         }
+    }
 
+    fun getAllEvents(): MutableList<EventsModel> {
+
+        val listOfEvents = mutableListOf<EventsModel>()
+        val db = readableDatabase
+        val selectQuery = "select * from $TABLE_NAME"
+        val queryResultCursor = db.rawQuery(selectQuery, null, null)
+
+        if (queryResultCursor != null && queryResultCursor.count > 0) {
+            queryResultCursor.moveToFirst()
+            while (queryResultCursor.moveToNext()) {
+
+                val idIndex = queryResultCursor.getColumnIndex(ID)
+                val nameIndex = queryResultCursor.getColumnIndex(NAME)
+                val descIndex = queryResultCursor.getColumnIndex(NAME)
+                val dateIndex = queryResultCursor.getColumnIndex(NAME)
+                val locationIndex = queryResultCursor.getColumnIndex(NAME)
+                val priceIndex = queryResultCursor.getColumnIndex(NAME)
+
+            }
+        }
+        return listOfEvents
 
     }
 
