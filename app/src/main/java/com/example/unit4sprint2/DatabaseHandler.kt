@@ -60,7 +60,7 @@ class DatabaseHandler(val context: Context) : SQLiteOpenHelper(context, "eventsd
         val queryResultCursor = db.rawQuery(selectQuery, null)
 
         if (queryResultCursor != null && queryResultCursor.count > 0) {
-            queryResultCursor.moveToFirst()
+            
             while (queryResultCursor.moveToNext()) {
 
                 val idIndex = queryResultCursor.getColumnIndex(ID)
